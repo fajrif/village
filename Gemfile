@@ -4,7 +4,9 @@ source 'http://rubygems.org'
 gemspec
 
 ## PLEASE UNBLOCK ME IF YOU WANT TO RUN TEST
+## WITH SPORK AND GUARD
 # group :development, :test do
+#   gem 'rails', '3.0.10'
 #   # load
 #   require 'rails'
 #   require 'action_view'

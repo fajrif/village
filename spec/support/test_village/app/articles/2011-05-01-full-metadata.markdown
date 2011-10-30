@@ -1,7 +1,5 @@
 ---
 title: Article with full metadata
-author: John Smith
-email: john.smith@example.com
 author:
   name: John Smith
   uri: http://yourhomepage.com
