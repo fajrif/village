@@ -1,0 +1,6 @@
+Description:
+The village:articles will generate article page for you.
+
+	rails g village:articles test-article.rdoc		# => using rdoc
+	
+	rails g village:articles sample-article.md --date=2011-01-01  # => passing date options

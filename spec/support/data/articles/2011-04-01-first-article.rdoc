@@ -1,0 +1,10 @@
+---
+title: Article with RDoc template
+tags: ["Village", "RDoc"]
+summary: This is another custom & test summary.
+---
+== Header
+
+First paragraph of content.
+
+Second paragraph of content.

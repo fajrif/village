@@ -1,0 +1,50 @@
+# Title and subheading for your site. Used on the home page and in page
+# titles.
+#
+title: "<%= rails_app_name %>"
+subtitle: "(change this text in config/village.yml)"
+
+# You should really specify your content's author when generating an
+# Atom feed. Specify at least one of name, uri or email, and Nesta will
+# include it in your feed. See the Atom spec for more info:
+#
+# http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.feed
+#
+author:
+  name: <%= git_config("user.name") %>
+  uri: http://yourhomepage.com
+  email: <%= git_config("user.email") %>
+
+# layout
+#     The root directory where Village will look for your pages / articles files.
+#     Should contain "pages" and "attachments" subdirectories that contain
+#     your actual content and the (optional) menu.txt file that links to your
+#     main category pages.
+#
+layout: "application"
+
+# page_size
+#     The root directory where Village will look for your pages / articles files.
+#     Should contain "pages" and "attachments" subdirectories that contain
+#     your actual content and the (optional) menu.txt file that links to your
+#     main category pages. the default is 5
+#
+# page_size: 5
+
+# disqus_short_name
+#   If you want to use the Disqus service (http://disqus.com) to display
+#   comments on your site, register a Disqus account and then specify your
+#   site's short name here. A comment form will automatically be added to
+#   the bottom of your pages.
+#
+# disqus_short_name: mysite
+
+# google_analytics_code
+#     Set this if you want Google Analytics to track traffic on your site.
+#     Probably best not to set a default value, but to set it in production.
+#
+#     The production settings are used if you're deploying to Heroku, so
+#     scroll down a bit to set it in production even if you're not deploying
+#     to your own server.
+#
+# google_analytics_code: "UA-???????-?"
