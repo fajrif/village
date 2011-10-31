@@ -14,23 +14,23 @@ describe 'Article views', :type => :request do
     it 'should show published articles' do
       # 2011-05-01-full-metadata (published today)
       page.should have_content('Article with full metadata')                # title
-      page.should have_content('Posted on 1 May 2011')                   # publish date
+      page.should have_content('Posted on 1 May 2011')                      # publish date
       page.should have_content('by John Smith')                             # author
       page.should have_content('This is another custom & test summary.')    # summary
 
       # 2011-04-28-summary
       page.should have_content('A Test Article')                      # title
-      page.should have_content('Posted on 28 April 2011')          # publish date
+      page.should have_content('Posted on 28 April 2011')             # publish date
       page.should have_content('This is a custom & test summary.')    # summary
 
       # 2011-04-28-image
       page.should have_content('Image')                       # title
-      page.should have_content('Posted on 28 April 2011')  # publish date
+      page.should have_content('Posted on 28 April 2011')     # publish date
       page.should have_content('Image description.')          # summary
 
       # 2011-04-01-first-article
-      page.should have_content('Test Village')                 # title
-      page.should have_content('Posted on 1 April 2011')     # publish date
+      page.should have_content('Test Village')                  # title
+      page.should have_content('Posted on 1 April 2011')        # publish date
       page.should have_content('Lorem ipsum dolor sit amet')    # part of summary
     end
 
@@ -41,14 +41,14 @@ describe 'Article views', :type => :request do
     end
 
     it 'should have the correct number of articles' do
-      all('section#articles article.article').size.should == 4
+      all('section#articles article.article').size.should == 5
     end
   end
 
   context 'Articles#index with no articles' do
     it 'should show a message' do
-      time_travel_to '2010-05-01'
-      visit articles_path
+      # time_travel_to '2010-05-01'
+      visit articles_path(:year => '2010', :month => '05', :day => '01')
 
       page.should have_content('No articles found.')
       page.should_not have_content('First Article')
@@ -98,9 +98,9 @@ describe 'Article views', :type => :request do
     before { visit article_path('2011/05/01/full-metadata') }
 
     it 'should have content' do
-      page.should have_content('Article with full metadata') # title
-      page.should have_content('Posted on 1 May 2011')    # publish date
-      page.should have_content('by John Smith')           # author
+      page.should have_content('Article with full metadata')  # title
+      page.should have_content('Posted on 1 May 2011')        # publish date
+      page.should have_content('by John Smith')               # author
 
       # body
       page.should have_content('First paragraph of content.')
@@ -130,7 +130,7 @@ describe 'Article views', :type => :request do
     end
 
     it 'should contain the correct number of entries' do
-       Nokogiri::XML(page.source).search('entry').size.should == 4
+       Nokogiri::XML(page.source).search('entry').size.should == 5
     end
 
     it 'should contain an entry that is properly constructed' do
