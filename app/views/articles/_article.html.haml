@@ -1,0 +1,20 @@
+= content_tag_for :article, article do
+  %header
+    %h1= link_to article.title, article
+    = image_tag article.gravatar_url(:size => 32, :default => 'identicon'), :height => 32, :width => 32
+    .meta
+      %time{:pubdate => 'true', :datetime => article.timestamp.iso8601}
+        Posted on #{article.date.strftime '%e %B %Y'}
+      %span
+        by
+        = article.author[:name]
+        %p
+          - if article.metadata[:tags].present?
+            Tags on:
+            - article.tags.each do |tag|
+              = link_to tag, articles_path(:tag => tag)
+  - if summary
+    = article.summary_html
+    %p.more= link_to 'Read more&hellip;'.html_safe, article
+  - else
+    ~ article.content_html

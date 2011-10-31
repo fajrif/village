@@ -1,0 +1,8 @@
+- if Village::Config.settings[:disqus_short_name].present?
+  #disqus_thread
+    - if ENV['RAILS_ENV'] == :development
+      :javascript
+        var disqus_developer = true;
+    %script{:type => 'text/javascript', :src => "http://#{Village::Config.disqus_short_name}.disqus.com/embed.js", :async => true}
+    %noscript
+      %a(href="http://#{Village::Config.disqus_short_name}.disqus.com/embed.js?url=ref") View comments.
