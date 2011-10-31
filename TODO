@@ -3,7 +3,13 @@ FIX this:
 - Extensions
 - Syntax highlighting for code blocks
 
-ADD this:
+THIS IS DONE:
+- modify guardfile
 - Commenting via discuss [done]
 - Google analytics [done]
 - add-this or share button support [done]
+
+TEST this:
+- google analytics
+- commenting via discuss
+- add-this button
