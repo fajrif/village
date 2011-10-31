@@ -4,8 +4,7 @@ class ActionDispatch::Routing::Mapper
     case controller
     when :articles
       options.reverse_merge!({ :as => :articles, :permalink_format => :day })
-      get "/#{options[:as]}(/tags/:tag)(/:year(/:month(/:day)))" => 'articles#index', :as => :articles, :constraints => { :year => /\d{4}/, :month => /\d{2}/, :day => /\d{2}/, :tag => /[^\/]+/ }
-      get "/#{options[:as]}/feed" => 'articles#feed', :as => :articles_feed, :format => :xml
+      get "/#{options[:as]}(.:format)(/tags/:tag)(/:year(/:month(/:day)))" => 'articles#index', :as => :articles, :constraints => { :year => /\d{4}/, :month => /\d{2}/, :day => /\d{2}/, :tag => /[^\/]+/ }
       get "/#{options[:as]}/*id" => 'articles#show', :as => :article, :constraints => { :id => village_permalink_regex(options) }
     when :pages
       match "/#{options[:as]}/*path" => 'pages#show', :as => :page, :format => false

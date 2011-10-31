@@ -1,5 +1,5 @@
 ---
-title: This is a custom title
+title: this is the next article
 ---
 
-Content goes here.
+The next article will ...

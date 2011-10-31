@@ -4,15 +4,7 @@ class ArticlesController < ApplicationController
   def show
     resource
   end
-
-  def feed
-    max_age = 4.hours
-    response.headers['Cache-Control'] = 'public, max-age=' + max_age.to_i.to_s
-    response.headers['Expires'] = max_age.from_now.httpdate
-    response.content_type = 'application/atom+xml'
-    fresh_when :last_modified => Article.feed_last_modified
-  end
-
+  
 protected
 
   def resource

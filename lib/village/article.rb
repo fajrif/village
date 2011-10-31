@@ -69,7 +69,7 @@ class Article
     end
 
     def feed
-      all.first(10)
+      all.first(page_size)
     end
 
     def feed_last_modified
@@ -82,7 +82,7 @@ class Article
     end
 
     def page_size
-      Village::Config.settings.try(:[],:page_size) || 5
+      Village::Config.settings.try(:[],:page_size) || 10
     end
   end
 

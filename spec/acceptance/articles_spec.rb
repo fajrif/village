@@ -9,7 +9,7 @@ describe 'Article views', :type => :request do
   after { back_to_the_present }
 
   context 'Articles#index' do
-    before { visit articles_path }
+    before { visit '/articles' }
 
     it 'should show published articles' do
       # 2011-05-01-full-metadata (published today)
@@ -36,18 +36,18 @@ describe 'Article views', :type => :request do
 
     it 'should not show unpublished articles' do
       # 2015-02-13-custom-title (not published yet)
-      page.should_not have_content('This is a custom title') # title
-      page.should_not have_content('Content goes here.')     # summary
+      page.should_not have_content('this is the next article')      # title
+      page.should_not have_content('The next article will ...')     # summary
     end
 
-    it 'should have the correct number of articles' do
-      all('section#articles article.article').size.should == 5
+    it 'should have the correct number of articles that paginated 10 per page' do
+      all('section#articles article.article').size.should == 10
     end
   end
 
   context 'Articles#index with no articles' do
     it 'should show a message' do
-      # time_travel_to '2010-05-01'
+      time_travel_to '2010-05-01'
       visit articles_path(:year => '2010', :month => '05', :day => '01')
 
       page.should have_content('No articles found.')
@@ -116,33 +116,61 @@ describe 'Article views', :type => :request do
     end
   end
 
-  context 'Articles#feed' do
-    before { visit articles_feed_path }
+  context 'Articles#index with rss format' do
+    before { visit articles_path(:format => :rss) }
 
-    it 'should be xml format type' do
-      page.response_headers['Content-Type'].should == 'application/atom+xml; charset=utf-8'
+    it 'should be rss format type' do
+      page.response_headers['Content-Type'].should == 'application/rss+xml; charset=utf-8'
     end
 
-    it 'should be valid xml' do
+    it 'should be valid rss' do
       lambda do
         Nokogiri::XML::Reader(page.source)
       end.should_not raise_error
     end
 
-    it 'should contain the correct number of entries' do
-       Nokogiri::XML(page.source).search('entry').size.should == 5
+    it 'should contain the correct number of items' do
+       Nokogiri::XML(page.source).search('item').size.should == 10
     end
 
-    it 'should contain an entry that is properly constructed' do
-      entry = Nokogiri::XML(page.source).search('entry').first
-
+    it 'should contain an item that is properly constructed' do
+      # pending
+      entry = Nokogiri::XML(page.source).search('item').first
+      
       entry.search('title').text.should == 'Article with full metadata'
       entry.search('author').first.search('name').text.should == 'John Smith'
-      entry.search('author').first.search('email').text.should == 'john.smith@example.com'
-      entry.search('published').text.should == '2011-05-01T00:00:00Z'
-      entry.search('content').text == "\n      <p>First paragraph of content.</p>\n\n<p>Second paragraph of content.</p>\n\n    "
+      entry.search('pubDate').text.should == '2011-05-01T00:00:00Z'
+      entry.search('description').text == "\n      <p>First paragraph of content.</p>\n\n<p>Second paragraph of content.</p>\n\n    "
     end
   end
+
+  context 'Articles#index with atom format' do
+      before { visit articles_path(:format => :atom) }
+
+      it 'should be atom format type' do
+        page.response_headers['Content-Type'].should == 'application/atom+xml; charset=utf-8'
+      end
+
+      it 'should be valid atom' do
+        lambda do
+          Nokogiri::XML::Reader(page.source)
+        end.should_not raise_error
+      end
+
+      it 'should contain the correct number of entries' do
+         Nokogiri::XML(page.source).search('entry').size.should == 10
+      end
+
+      it 'should contain an entry that is properly constructed' do
+        entry = Nokogiri::XML(page.source).search('entry').first
+
+        entry.search('title').text.should == 'Article with full metadata'
+        entry.search('author').first.search('name').text.should == 'John Smith'
+        entry.search('author').first.search('email').text.should == 'john.smith@example.com'
+        entry.search('published').text.should == '2011-05-01T00:00:00Z'
+        entry.search('content').text == "\n      <p>First paragraph of content.</p>\n\n<p>Second paragraph of content.</p>\n\n    "
+      end
+    end
 
   context 'Articles#show with invalid slug' do
     it 'should raise missing template' do
