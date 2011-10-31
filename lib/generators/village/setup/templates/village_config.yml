@@ -1,12 +1,14 @@
-# Title and subheading for your site. Used on the home page and in page
-# titles.
+# title & subtitle
+#   Title and subheading for your site. Used on the layout page and 
+#   will be overriden in every page titles.
 #
-title: "<%= rails_app_name %>"
-subtitle: "(change this text in config/village.yml)"
+title: <%= rails_app_name %>
+subtitle: (change this text in config/village.yml)
 
-# You should really specify your content's author when generating an
-# Atom feed. Specify at least one of name, uri or email, and Nesta will
-# include it in your feed. See the Atom spec for more info:
+# author
+#   You should really specify your content's author when generating an
+#   Atom feed. Specify at least one of name, uri or email, and Village will
+#   include it in your feed. See the Atom spec for more info:
 #
 # http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.feed
 #
@@ -16,18 +18,14 @@ author:
   email: <%= git_config("user.email") %>
 
 # layout
-#     The root directory where Village will look for your pages / articles files.
-#     Should contain "pages" and "attachments" subdirectories that contain
-#     your actual content and the (optional) menu.txt file that links to your
-#     main category pages.
+#     The name of the layout file to be used by Village specified in "app/views/layouts",
+#     village will look for every pages / articles layouts for every request.
 #
-layout: "application"
+layout: application
 
 # page_size
-#     The root directory where Village will look for your pages / articles files.
-#     Should contain "pages" and "attachments" subdirectories that contain
-#     your actual content and the (optional) menu.txt file that links to your
-#     main category pages. the default is 5
+#     the page size / PER_PAGE used by Kaminari for paginate your articles,
+#     the default is 5
 #
 # page_size: 5
 
