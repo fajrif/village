@@ -13,8 +13,6 @@ group :development, :test do
   require 'action_controller/vendor/html-scanner/html/sanitizer'
   
   # test gems
-  gem "spork", "> 0.9.0.rc"
-  gem "guard-spork"
   gem 'rspec-rails', '~> 2.5'
   gem 'guard-rspec'
   gem 'capybara', '~> 1.0.0.beta'
