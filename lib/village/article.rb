@@ -56,8 +56,7 @@ class Article
     end
 
     def find(id)
-      where(:to_param => id).first or raise ActionView::MissingTemplate.new(
-              ["#{Rails.root}/app/articles"], id.inspect, "Invalid article path ID", false)
+      where(:to_param => id).first or raise_missing_template(id.inspect)
     end
 
     def first
@@ -83,6 +82,17 @@ class Article
 
     def page_size
       Village::Config.settings.try(:[],:page_size) || 10
+    end
+    
+    private
+    def raise_missing_template(path)
+      if Rails::VERSION::MAJOR == 3 && Rails::VERSION::MINOR >= 1
+        raise ActionView::MissingTemplate.new(
+                ["#{Rails.root}/app/articles"], path, "articles", false, ActionView::Template.template_handler_extensions)
+      else
+        raise ActionView::MissingTemplate.new(
+                ["#{Rails.root}/app/articles"], path, "Invalid article path ID", false)
+      end
     end
   end
 
