@@ -8,7 +8,7 @@ class ActionDispatch::Routing::Mapper
       get "/#{options[:as]}/*id" => 'articles#show', :as => :article, :constraints => { :id => Village::Config.village_permalink_regex(options) }
     when :pages
       Village::Config.register_template_handler
-      match "/#{options[:as]}/*path" => 'pages#show', :as => :page, :format => false
+      match "/#{options[:as]}/*id" => 'pages#show', :as => :page, :format => false
     end
   end
 
