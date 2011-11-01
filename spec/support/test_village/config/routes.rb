@@ -7,6 +7,7 @@ TestVillage::Application.routes.draw do
   village :pages
 
   root :to => "articles#index"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

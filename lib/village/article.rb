@@ -57,7 +57,7 @@ class Article
 
     def find(id)
       where(:to_param => id).first or raise ActionView::MissingTemplate.new(
-              ActionController::Base.view_paths, id.inspect, "Invalid article path ID", false)
+              ["#{Rails.root}/app/articles"], id.inspect, "Invalid article path ID", false)
     end
 
     def first

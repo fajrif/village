@@ -8,8 +8,7 @@ module Village
       class_option :articles, :desc => 'Setup village:articles for blog engine', :type => :boolean, :default => true
       
       def setup
-        template 'village_config.yml', 'config/village_config.yml', :verbose => false
-        copy_file 'init_village.rb', 'config/initializers/init_village.rb', :verbose => false
+        template 'village_config.yml', 'config/village_config.yml'
         setup_pages if options.pages
         setup_articles if options.articles
         setup_markdown
@@ -30,6 +29,7 @@ module Village
         asking "would you like to setup village:articles for blog engine?" do
           empty_directory "app/articles"
           copy_asset 'views/village.css', 'public/stylesheets/village.css'
+          print_notes "copied default village stylesheets.css you can change it later!"
           copy_file '2001-01-01-example-article.markdown', 'app/articles/2001-01-01-example-article.markdown'
           route "village :articles"
           gem "kaminari"

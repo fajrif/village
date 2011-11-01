@@ -2,7 +2,7 @@
 #   Title and subheading for your site. Used on the layout page and 
 #   will be overriden in every page titles.
 #
-title: <%= rails_app_name %>
+title: Test Village
 subtitle: (change this text in config/village.yml)
 
 # author
@@ -13,9 +13,9 @@ subtitle: (change this text in config/village.yml)
 # http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.feed
 #
 author:
-  name: <%= git_config("user.name") %>
+  name: Fajri Fachriansyah
   uri: http://yourhomepage.com
-  email: <%= git_config("user.email") %>
+  email: fajri82@gmail.com
 
 # layout
 #     The name of the layout file to be used by Village specified in "app/views/layouts",
@@ -46,3 +46,42 @@ layout: village
 #     to your own server.
 #
 # google_analytics_code: "UA-???????-?"
+
+# -------------------------------
+# ======== DEFAULT CONFIGURATIONS
+# -------------------------------
+# 
+# permalink_format
+#     Set this if you want Google Analytics to track traffic on your site.
+#     Probably best not to set a default value, but to set it in production.
+#
+#     The production settings are used if you're deploying to Heroku, so
+#     scroll down a bit to set it in production even if you're not deploying
+#     to your own server.
+#
+# permalink_format: day
+
+# permalink_regex
+#     Set this if you want Google Analytics to track traffic on your site.
+#     Probably best not to set a default value, but to set it in production.
+#
+#     The production settings are used if you're deploying to Heroku, so
+#     scroll down a bit to set it in production even if you're not deploying
+#     to your own server.
+# 
+# permalink_regex:
+#   day: %r[\d{4}/\d{2}/\d{2}/[^/]+]
+#   month: %r[\d{4}/\d{2}/[^/]+]
+#   year: %r[\d{4}/[^/]+]
+#   slug: %r[[^/]+]
+
+# file_extensions
+#     Set this if you want Google Analytics to track traffic on your site.
+#     Probably best not to set a default value, but to set it in production.
+#
+#     [ "erb", "rhtml", "erubis", "haml", "builder", "liquid", 
+#       "markdown", "mkd", "md", "textile", "rdoc", "radius", 
+#       "mab", "wiki", "mediawiki", "mw", "creole", "yajl" ]
+#
+# file_extensions: ["markdown", "textile", "erb", "haml"]
+
