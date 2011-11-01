@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  layout Village::Config.layout
+  
   rescue_from ActionView::MissingTemplate do |exception|
     if exception.message =~ %r{Missing template pages/#{params[:path]}}
       raise ActionController::RoutingError, "No such page: #{params[:path]}"
@@ -8,6 +10,6 @@ class PagesController < ApplicationController
   end
   
   def show
-    render :template => "pages/#{params[:path]}", :layout => Village::Config.layout
+    render :template => "pages/#{params[:path]}"
   end
 end

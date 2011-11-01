@@ -1,10 +1,10 @@
 TestVillage::Application.routes.draw do
   
-  resources :posts
-
   village :articles
 
   village :pages
+
+  resources :posts
 
   root :to => "articles#index"
   

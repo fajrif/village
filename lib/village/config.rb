@@ -4,9 +4,13 @@ module Village
   class Config
 
     def self.load(path = "#{Rails.root}/config/village_config.yml")
-      raise_village_configuration_error("Unable to locate configuration file: #{path}") unless File.exists? path
-      Config.settings ||= YAML::load(IO.read(path)).with_indifferent_access
-      Config.settings.reverse_merge!(default_settings)
+      if File.exists? path
+        Config.settings = nil
+        Config.settings = YAML::load(IO.read(path)).with_indifferent_access
+        Config.settings.reverse_merge!(default_settings)
+      else
+        Config.settings = default_settings
+      end
     end
 
     class << self
@@ -30,7 +34,8 @@ module Village
           :slug => %r[[^/]+]
           },
         :permalink_format => :day,
-        :file_extensions => ["markdown", "textile", "erb", "haml"]
+        :file_extensions => ["markdown", "textile", "erb", "haml"],
+        :layout => "application"
         }
     end
 
