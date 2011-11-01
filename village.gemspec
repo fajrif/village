@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "village"
-  s.version     = "2.0.6"
+  s.version     = "2.0.7"
   s.platform    = Gem::Platform::RUBY
   s.rubyforge_project = "village"
   s.authors     = "Fajri Fachriansyah"
