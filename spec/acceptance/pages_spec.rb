@@ -21,7 +21,7 @@ describe 'Page views', :type => :request do
     it 'should raise an not found exception' do
       lambda do
         visit page_path('help/to/do/this')
-      end.should raise_error(ActionView::MissingTemplate)
+      end.should raise_error(ActionController::RoutingError)
     end
   end
 
