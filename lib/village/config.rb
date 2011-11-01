@@ -34,8 +34,8 @@ module Village
           :slug => %r[[^/]+]
           },
         :permalink_format => :day,
-        :file_extensions => ["markdown", "textile", "erb", "haml"],
-        :layout => "application"
+        :file_extensions => ["markdown", "erb", "haml"],
+        :layout => "village"
         }
     end
 

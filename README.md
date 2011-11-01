@@ -6,7 +6,7 @@ Village are inspired by [high_voltage](https://github.com/thoughtbot/high_voltag
 mini blog engine inside your Rails 3 application. 
 
 So Village are the combination of it, combination of all unnecessary files, nasty that you definitely don't want 
-them to be stored into your database, rather than just read from the disk and just use `http_caching`, `memcached`
+to be stored into the database, rather than just read from the disk and just use `http_caching`, `memcached`
 or whatever caching mechanism you wish to use in your production mode.
 
 Village is compatible with Rails 3 only and the gem is hosted on [RubyGems.org](https://rubygems.org/gems/village).
@@ -15,7 +15,7 @@ Village is compatible with Rails 3 only and the gem is hosted on [RubyGems.org](
 
 * Using various template engines such as markdown, textile, erb, etc. (whatever that `tilt` support)
 * No database and administering page (update your content using git only)
-* RSS Feed
+* RSS Feed / Atom
 * Customizable Routes
 * HTML5 support
 * Rails engine (so you can override views, controllers, etc)
@@ -25,8 +25,7 @@ Village is compatible with Rails 3 only and the gem is hosted on [RubyGems.org](
 * Support for tags / categories for articles
 * Paginated article using `kaminari`
 * Gravatar support using `gravtastic`
-* Syntax highlighting for code blocks
-* `add-this` or `share` button support
+* `add-this` button support
 
 ## Installation
 
@@ -108,7 +107,7 @@ and use it inside your views like this line:
 
 ### RSS Feed
 
-Village:Articles comes prepared with a fully functional RSS feed.
+Village:Articles comes prepared with a fully functional RSS feed / Atom.
 
 You can take advantage of the built-in feed by adding the feed link to your HTML head tag. For example, simply add the following to your default layout:
 
@@ -117,7 +116,8 @@ You can take advantage of the built-in feed by adding the feed link to your HTML
       <%= yield :head %>
     </head>
 
-To link to the feed in your app, simply use the route helper: `<%= link_to 'RSS Feed', articles_feed_path %>`
+To link to the feed in your app, simply use the route helper: `<%= link_to 'RSS Feed', articles_path(:rss) %>`
+or if you like to use Atom: `articles_path(:atom)`
 
 ## Customizing Routes
 
@@ -147,7 +147,7 @@ This will produce the following routes:
     http://localhost:3000/blog/2011/01/01           # lists all articles from the 1st of January 2011
     http://localhost:3000/blog/tags/ruby            # lists all articles tagged with ruby
     http://localhost:3000/blog/2011/01/01/test-post # show the specified article
-  http://localhost:3000/content/home              # show the specified static page
+    http://localhost:3000/content/home              # show the specified static page
 
 You can also customize the `articles#show` route for `village:articles` via the `:permalink_format` option:
 

@@ -21,7 +21,7 @@ author:
 #     The name of the layout file to be used by Village specified in "app/views/layouts",
 #     village will look for every pages / articles layouts for every request.
 #
-layout: village
+# layout: village
 
 # page_size
 #     the page size / PER_PAGE used by Kaminari for paginate your articles,
@@ -52,36 +52,30 @@ layout: village
 # -------------------------------
 # 
 # permalink_format
-#     Set this if you want Google Analytics to track traffic on your site.
-#     Probably best not to set a default value, but to set it in production.
+#     Set this if you want change the default permalink_format
+#     the options are :
 #
-#     The production settings are used if you're deploying to Heroku, so
-#     scroll down a bit to set it in production even if you're not deploying
-#     to your own server.
-#
+#     "day"    URL: http://localhost:3000/articles/2011/01/01/test-post
+#     "month"  URL: http://localhost:3000/articles/2011/01/test-post
+#     "year"   URL: http://localhost:3000/articles/2011/test-post
+#     "slug"   URL: http://localhost:3000/articles/test-post
+#     
+#     the default village:articles will use permalink_format "day"
+#     You can also customize this throug route options
+# 
 # permalink_format: day
 
-# permalink_regex
-#     Set this if you want Google Analytics to track traffic on your site.
-#     Probably best not to set a default value, but to set it in production.
-#
-#     The production settings are used if you're deploying to Heroku, so
-#     scroll down a bit to set it in production even if you're not deploying
-#     to your own server.
-# 
-# permalink_regex:
-#   day: %r[\d{4}/\d{2}/\d{2}/[^/]+]
-#   month: %r[\d{4}/\d{2}/[^/]+]
-#   year: %r[\d{4}/[^/]+]
-#   slug: %r[[^/]+]
-
 # file_extensions
-#     Set this if you want Google Analytics to track traffic on your site.
-#     Probably best not to set a default value, but to set it in production.
+#     Set this file_extensions which engine you want to use
+#     Village will accepts these formats :
 #
 #     [ "erb", "rhtml", "erubis", "haml", "builder", "liquid", 
 #       "markdown", "mkd", "md", "textile", "rdoc", "radius", 
 #       "mab", "wiki", "mediawiki", "mw", "creole", "yajl" ]
-#
-# file_extensions: ["markdown", "textile", "erb", "haml"]
+#     
+#     remember you have to set this settings with String 
+#     inside an [Array]
+#     by default Village will accepts :markdown, :erb and :haml
+# 
+# file_extensions: ["markdown", "erb", "haml"]
 
