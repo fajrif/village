@@ -124,6 +124,15 @@ protected
         raise e
       end
       
+      def check_some_gems?(*names)
+        names.each do |name|
+          return true if gemfile_included? name
+        end
+        false
+      rescue Exception => e
+        raise e
+      end
+      
       def rails_3_1?
         Rails::VERSION::MAJOR == 3 && Rails::VERSION::MINOR >= 1
       end

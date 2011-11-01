@@ -31,6 +31,6 @@ gem 'village', :path => '../../../'
 group :development, :test do
   gem 'pry'
 end
-gem "redcarpet"
 gem "rdoc"
 gem "kaminari"
+gem "redcarpet"

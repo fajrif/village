@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   def show
     resource
   end
-  
+
 protected
 
   def resource
