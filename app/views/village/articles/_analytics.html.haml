@@ -1,5 +1,5 @@
 - content_for :head do
-  - if Village::Config.settings[:google_analytics_code].present?
+  - if Village::Config.google_analytics_code?
     :plain
       <script type="text/javascript">
         var _gaq = _gaq || [];

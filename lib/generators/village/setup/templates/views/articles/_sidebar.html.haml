@@ -1,6 +1,0 @@
-%h4
-  Tags
-- unless Article.tags.nil?
-  %ul
-    - Article.tags.each do |tag|
-      %li= link_to "#{tag[0]} (#{tag[1]})", articles_path(:tag => tag[0])

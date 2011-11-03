@@ -21,7 +21,7 @@ author:
 #     The name of the layout file to be used by Village specified in "app/views/layouts",
 #     village will look for every pages / articles layouts for every request.
 #
-# layout: village
+layout: "village"
 
 # page_size
 #     the page size / PER_PAGE used by Kaminari for paginate your articles,

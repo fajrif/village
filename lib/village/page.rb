@@ -1,7 +1,10 @@
-require 'tilt'
+module Village
+  class Page < FileModel
 
-class Page
-  def self.call(template)
-    Tilt[template.inspect].new(template.inspect).render.inspect
+    CONTENT_PATH = "app/views/pages"
+
+    self.superclass.create_class_methods_on(Village::Page)
+
   end
 end
+

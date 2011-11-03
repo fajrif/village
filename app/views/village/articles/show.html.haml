@@ -2,7 +2,7 @@
 %section#sidebar
   = render 'sidebar'
 
-= render resource, :summary => false
+= render :partial => 'article', :object => resource, :locals => { :summary => false }
 
 = render 'addthis'
 

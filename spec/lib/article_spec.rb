@@ -1,6 +1,7 @@
 require 'spec_helper'
+require 'village/article'
 
-describe Article do
+describe Village::Article do
   def test_article(file_name)
     Article.new(File.dirname(__FILE__) + "/../support/data/articles/#{file_name}")
   end

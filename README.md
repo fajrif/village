@@ -103,7 +103,7 @@ inside this kind of block and use it inside your views. For example :
 notice that `sub_summary` are not required by `village:articles`, but you still able to add it
 and use it inside your views like this line:
 
-	article.sub_summary if article.metadata[:sub_summary].present?
+	article.sub_summary if article.sub_summary?
 
 ### RSS Feed
 

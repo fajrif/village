@@ -13,7 +13,7 @@
       = yield
     %footer
       %small
-        - if Village::Config.try(:author)
+        - if Village::Config.author?
           A #{link_to 'village',  Village::Config.author[:url]} blog
           = "by #{Village::Config.author[:name]}"
         = "Copyright &copy; #{Date.today.year}".html_safe

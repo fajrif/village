@@ -9,7 +9,7 @@
         by
         = article.author[:name]
         %p
-          - if article.metadata[:tags].present?
+          - if article.tags?
             Tags on:
             - article.tags.each do |tag|
               = link_to tag, articles_path(:tag => tag)

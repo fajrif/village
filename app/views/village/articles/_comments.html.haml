@@ -1,4 +1,4 @@
-- if Village::Config.settings[:disqus_short_name].present?
+- if Village::Config.disqus_short_name?
   #disqus_thread
     - if ENV['RAILS_ENV'] == :development
       :javascript
