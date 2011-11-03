@@ -52,9 +52,9 @@ all the configuration settings are managed in YAML file `config/village_config.y
 
 Your static content pages are lived under `app/views/pages` directory, you can have many nested folder with pages in here!
 
-you can access your static pages using route helper method `page_path`, for example:
+you can access your static pages using route helper method `village_page_path`, for example:
 
-    <%= link_to "My Page", page_path('to/my/page') %>
+    <%= link_to "My Page", village_page_path('to/my/page') %>
 
 if you setup `village:pages` properly, you will have some example page `app/views/pages/example-page.markdown`
 to tested it, open `http://localhost:3000/example-page` in your browser and you should be able to navigate to your static page. 
@@ -116,8 +116,8 @@ You can take advantage of the built-in feed by adding the feed link to your HTML
       <%= yield :head %>
     </head>
 
-To link to the feed in your app, simply use the route helper: `<%= link_to 'RSS Feed', articles_path(:rss) %>`
-or if you like to use Atom: `articles_path(:atom)`
+To link to the feed in your app, simply use the route helper: `<%= link_to 'RSS Feed', village_articles_path(:rss) %>`
+or if you like to use Atom: `village_articles_path(:atom)`
 
 ## Customizing Routes
 

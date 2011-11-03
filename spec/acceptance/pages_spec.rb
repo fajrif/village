@@ -9,18 +9,18 @@ describe 'Page views', :type => :request do
     end
     
     it 'should render valid ERB page' do
-      visit page_path("erb/test-page")
+      visit village_page_path("erb/test-page")
     end
     
     it 'should render valid HAML page' do
-      visit page_path("haml/test-page")
+      visit village_page_path("haml/test-page")
     end
   end
 
   context 'Pages#show with invalid path' do
     it 'should raise an not found exception' do
       lambda do
-        visit page_path('help/to/do/this')
+        visit village_page_path('help/to/do/this')
       end.should raise_error(ActionController::RoutingError)
     end
   end

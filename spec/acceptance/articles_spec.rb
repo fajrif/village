@@ -48,7 +48,7 @@
 #   context 'Articles#index with no articles' do
 #     it 'should show a message' do
 #       time_travel_to '2010-05-01'
-#       visit articles_path(:year => '2010', :month => '05', :day => '01')
+#       visit village_articles_path(:year => '2010', :month => '05', :day => '01')
 # 
 #       page.should have_content('No articles found.')
 #       page.should_not have_content('First Article')
@@ -56,7 +56,7 @@
 #   end
 # 
 #   context 'Articles#index with year' do
-#     before { visit articles_path(:year => '2011') }
+#     before { visit village_articles_path(:year => '2011') }
 # 
 #     it 'should show articles inside the date range' do
 #       page.should have_content('Article with full metadata')
@@ -67,7 +67,7 @@
 #   end
 # 
 #   context 'Articles#index with year and month' do
-#     before { visit articles_path(:year => '2011', :month => '04') }
+#     before { visit village_articles_path(:year => '2011', :month => '04') }
 # 
 #     it 'should show articles inside the date range' do
 #       page.should have_content('A Test Article')
@@ -81,7 +81,7 @@
 #   end
 # 
 #   context 'Articles#index with year, month and day' do
-#     before { visit articles_path(:year => '2011', :month => '04', :day => '01') }
+#     before { visit village_articles_path(:year => '2011', :month => '04', :day => '01') }
 # 
 #     it 'should show articles inside the date range' do
 #       page.should have_content('Test Village')
@@ -95,7 +95,7 @@
 #   end
 # 
 #   context 'Articles#show' do
-#     before { visit article_path('2011/05/01/full-metadata') }
+#     before { visit village_article_path('2011/05/01/full-metadata') }
 # 
 #     it 'should have content' do
 #       page.should have_content('Article with full metadata')  # title
@@ -117,7 +117,7 @@
 #   end
 # 
 #   context 'Articles#index with rss format' do
-#     before { visit articles_path(:format => :rss) }
+#     before { visit village_articles_path(:format => :rss) }
 # 
 #     it 'should be rss format type' do
 #       page.response_headers['Content-Type'].should == 'application/rss+xml; charset=utf-8'
@@ -145,7 +145,7 @@
 #   end
 # 
 #   context 'Articles#index with atom format' do
-#       before { visit articles_path(:format => :atom) }
+#       before { visit village_articles_path(:format => :atom) }
 # 
 #       it 'should be atom format type' do
 #         page.response_headers['Content-Type'].should == 'application/atom+xml; charset=utf-8'
@@ -175,7 +175,7 @@
 #   context 'Articles#show with invalid slug' do
 #     it 'should raise missing template' do
 #       lambda do
-#         visit article_path(:id => '2011/05/01/invalid')
+#         visit village_article_path(:id => '2011/05/01/invalid')
 #       end.should raise_error(ActionView::MissingTemplate)
 #     end
 #   end

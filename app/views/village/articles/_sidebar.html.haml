@@ -3,4 +3,4 @@
 - unless Village::Article.tags.nil?
   %ul
     - Village::Article.tags.each do |tag|
-      %li= link_to "#{tag[0]} (#{tag[1]})", articles_path(:tag => tag[0])
+      %li= link_to "#{tag[0]} (#{tag[1]})", village_articles_path(:tag => tag[0])

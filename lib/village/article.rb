@@ -50,7 +50,7 @@ module Village
       end
 
       def feed
-        all.first(page_size)
+        all.first(Village::Config.page_size)
       end
 
       def feed_last_modified
@@ -66,7 +66,7 @@ module Village
     def initialize(path)
       super path
       attributes[:permalink_format] = Village::Config.permalink_format
-      @date_str = File.basename(path).match(/^(\d+-\d+-\d+)-(.*)(\.[^.]+)$/).captures
+      @date_str, @slug = File.basename(path).match(/^(\d+-\d+-\d+)-(.*)(\.[^.]+)$/).captures
     end
 
     def date

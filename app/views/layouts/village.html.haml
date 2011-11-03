@@ -17,6 +17,6 @@
           A #{link_to 'village',  Village::Config.author[:url]} blog
           = "by #{Village::Config.author[:name]}"
         = "Copyright &copy; #{Date.today.year}".html_safe
-        = link_to 'rss', articles_path(:rss)
+        = link_to 'rss', village_articles_path(:rss)
         |
-        = link_to 'atom', articles_path(:atom)
+        = link_to 'atom', village_articles_path(:atom)

@@ -4,15 +4,15 @@ describe 'village:pages routes' do
   context "using default configuration" do
 
     it "should generate normal resource route with :id" do
-      page_path(:id => "one").should == "/one"
+      village_page_path(:id => "one").should == "/one"
     end
 
     it "should generate normal resource route with string" do
-      page_path("one").should == "/one"
+      village_page_path("one").should == "/one"
     end
 
     it "should generate nested route with string" do
-      page_path("one/two").should == "/one/two"
+      village_page_path("one/two").should == "/one/two"
     end
 
     it "should recognize nested route" do
@@ -34,15 +34,15 @@ describe 'village:pages routes' do
     end
 
     it "should generate normal resource route with path" do
-      page_path(:id => "one").should == "/content/one"
+      village_page_path(:id => "one").should == "/content/one"
     end
 
     it "should generate normal resource route with string" do
-      page_path("one").should == "/content/one"
+      village_page_path("one").should == "/content/one"
     end
 
     it "should generate nested route with string" do
-      page_path("one/two").should == "/content/one/two"
+      village_page_path("one/two").should == "/content/one/two"
     end
 
     it "should recognize nested route" do

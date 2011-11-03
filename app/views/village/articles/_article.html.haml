@@ -12,7 +12,7 @@
           - if article.tags?
             Tags on:
             - article.tags.each do |tag|
-              = link_to tag, articles_path(:tag => tag)
+              = link_to tag, village_articles_path(:tag => tag)
   - if summary
     = article.summary_html
     %p.more= link_to 'Read more&hellip;'.html_safe, article

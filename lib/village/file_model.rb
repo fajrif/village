@@ -72,7 +72,7 @@ module Village
     end
     
     def to_s
-      "#{@attributes[:title].inspect} (#{@to_param})"
+      "#{@attributes[:title]} (#{@to_param})"
     end
     
     def to_key

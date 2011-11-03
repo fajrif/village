@@ -22,7 +22,8 @@ module Village
           },
         :permalink_format => :day,
         :file_extensions => ["markdown", "erb", "haml"],
-        :layout => "village"
+        :layout => "village",
+        :page_size => 10
         }
     end
 

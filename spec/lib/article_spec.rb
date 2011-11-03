@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'village/article'
 
 describe Village::Article do
   def test_article(file_name)
