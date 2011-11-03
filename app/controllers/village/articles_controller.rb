@@ -18,7 +18,7 @@ module Village
     helper_method :resource
 
     def collection
-      @collection ||= Article.where(params.slice(:year, :month, :day, :tag))
+      @collection ||= Article.where(params.slice(:year, :month, :day, :tag, :category))
       Kaminari.paginate_array(@collection).page(params[:page]).per(Village::Config.page_size)
     end
     helper_method :collection

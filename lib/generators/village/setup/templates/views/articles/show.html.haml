@@ -1,0 +1,9 @@
+= render 'feed_link'
+%section#sidebar
+  = render 'sidebar'
+
+= render :partial => 'article', :object => resource, :locals => { :summary => false }
+
+= render 'addthis'
+
+= render 'comments'

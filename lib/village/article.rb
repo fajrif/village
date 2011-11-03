@@ -6,7 +6,7 @@ module Village
     include Gravtastic
     is_gravtastic
 
-    CONTENT_PATH = "app/articles"
+    CONTENT_PATH = "app/views/articles"
 
     delegate :year, :month, :day, :to => :date
 
@@ -22,8 +22,18 @@ module Village
       end
 
       def tags
-        @@tags ||= all.map do |article| 
+        @tags ||= all.map do |article| 
           article.tags if article.attributes[:tags].present?
+        end.compact.flatten.inject(Hash.new(0)) do |h,e| 
+          h[e] += 1; h
+        end.inject({}) do |r, e| 
+          r[e.first] = e.last; r
+        end
+      end
+
+      def categories
+        @categories ||= all.map do |article| 
+          article.categories if article.attributes[:categories].present?
         end.compact.flatten.inject(Hash.new(0)) do |h,e| 
           h[e] += 1; h
         end.inject({}) do |r, e| 
@@ -33,15 +43,17 @@ module Village
 
       def where(conditions = {})
         conditions = conditions.symbolize_keys
-        conditions.assert_valid_keys :year, :month, :day, :slug, :to_param, :tag
+        conditions.assert_valid_keys :year, :month, :day, :slug, :to_param, :tag, :category
         [:year, :month, :day].each do |key|
           conditions[key] = conditions[key].to_i if conditions[key].present?
         end
-        all.select do |article|
+        order.select do |article|
           conditions.all? do |key, value| 
             case key
             when :tag
               article.tags.include?(value) if article.attributes[:tags].present?
+            when :category
+              article.categories.include?(value) if article.attributes[:categories].present?
             else
               article.send(key) == value
             end
@@ -50,7 +62,7 @@ module Village
       end
 
       def feed
-        all.first(Village::Config.page_size)
+        order.first(Village::Config.page_size)
       end
 
       def feed_last_modified
@@ -58,8 +70,9 @@ module Village
       end
 
       def reset!
-        @@files = nil
-        @@tags = nil
+        @files = nil
+        @tags = nil
+        @categories = nil
       end
     end
 

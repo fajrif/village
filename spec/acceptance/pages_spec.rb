@@ -15,6 +15,10 @@ describe 'Page views', :type => :request do
     it 'should render valid HAML page' do
       visit village_page_path("haml/test-page")
     end
+    
+    it 'should render valid Markdown page' do
+      visit village_page_path("example-page")
+    end
   end
 
   context 'Pages#show with invalid path' do

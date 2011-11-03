@@ -1,8 +1,0 @@
----
-title: A Test Article
-summary: This is a custom & test summary.
----
-
-First paragraph of content.
-
-Second paragraph of content.

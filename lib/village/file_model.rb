@@ -23,7 +23,7 @@ module Village
     def self.create_class_methods_on(klass)
       klass.instance_eval do
         def all
-         @@files ||= Dir.glob("#{Rails.root}/#{self::CONTENT_PATH}/**/*.{#{Village::Config.file_extensions.join(',')}}").map do |filename|
+         @files ||= Dir.glob("#{Rails.root}/#{self::CONTENT_PATH}/**/*.{#{Village::Config.file_extensions.join(',')}}").map do |filename|
             new filename
           end
         end
@@ -51,7 +51,7 @@ module Village
         end
       
         def reset!
-          @@files = nil
+          @files = nil
         end
         
         private
