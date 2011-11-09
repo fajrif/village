@@ -180,10 +180,10 @@ or redirect root_path to some static pages in this case `home.erb`:
     │           	├── _sidebar.html.haml
     │           	├── ...
     │           	└── show.html.haml
-    │   	├── articles (where your article files live)
-    │   	│   ├── 2011-04-01-example-1.markdown
-    │   	│   ├── ...
-    │   	│   ├── 2011-04-04-example-4.markdown
+    │       ├── articles (where your article files live)
+    │       │   ├── 2011-04-01-example-1.markdown
+    │       │   ├── ...
+    │       │   ├── 2011-04-04-example-4.markdown
     │       └── pages (where your static page files live)
     │           ├── home.haml
     │           ├── FAQ_FOLDERS
