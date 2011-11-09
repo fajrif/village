@@ -23,7 +23,7 @@ module Village
 
       def generate_article
         @date_str, @slug, @extension = File.basename(filename).match(/^(\d+-\d+-\d+)-(.*)(\.[^.]+)$/).captures
-        create_file "app/articles/#{@date_str}-#{@slug}#{@extension}" do
+        create_file "app/views/articles/#{@date_str}-#{@slug}#{@extension}" do
           "---\n" +
           "title: #{@slug.titleize}\n" +
           "summary: summary goes here ...\n" +

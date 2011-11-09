@@ -1,5 +1,5 @@
 Description:
 The village:setup will setup village:pages or village:articles
-depending what you will need.
+depending what you need.
 
 	rails g village:setup

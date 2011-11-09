@@ -9,6 +9,8 @@ module Village
       
       def setup
         template 'village_config.yml', 'config/village_config.yml'
+        gem "haml-rails"
+        refresh_bundle
         setup_pages if options.pages
         setup_articles if options.articles
         setup_markdown
@@ -22,6 +24,11 @@ module Village
           empty_directory "app/views/pages"
           route "village :pages"
           copy_file 'example-page.markdown', 'app/views/pages/example-page.markdown'
+          asking "would you to copy village:pages views application directory?" do
+            empty_directory "app/views/village/pages/"
+            directory "views/pages", "app/views/village/pages/", :recursive => true
+            copy_file 'views/village.html.haml', 'app/views/layouts/village.html.haml', :force => true
+          end
         end
       end
       
@@ -37,7 +44,7 @@ module Village
           asking "would you to copy village:articles views directory?" do
             empty_directory "app/views/village/articles/"
             directory "views/articles", "app/views/village/articles/", :recursive => true
-            copy_file 'views/village.html.haml', 'app/views/layouts/village.html.haml'
+            copy_file 'views/village.html.haml', 'app/views/layouts/village.html.haml', :force => true
           end
         end
       end
