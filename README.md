@@ -209,7 +209,7 @@ You have to create a PagesController of your own:
 Then modify your new `PagesController` it to inherit from Village::PagesController, adding whatever you need:
 
     class PagesController < Village::PagesController
-      before_filter: authenticate_user!
+      skip_before_filter: authenticate_user!
     end
 
 And then change the default `village:pages` route to route to your new controller:
